@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+</head>
+<body>
+	{% load static %}
+<div class="navbar">
+  <a href="index.html">Events</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="#contact">User Page</a>
+  <a href="objectives.html">Objectives</a>
+</div>
+<form id="form_cal">
+	<label>Amount of Time:</label>
+	<input id="AOT" name="" type="text">
+	<label>Description:</label>
+	<textarea id="desc" name="paragraph_text" cols="50" rows="5"></textarea>
+	<select id="day"></select>
+	<label>Day of the Month:</label>
+	<button onclick="update()">Create Calendar Event</button>
+</form>
+	<style>
+.bbl {
+	overflow: auto;
+}
+#AOT {
+	float: right;
+	width: 100%;
+}
+button {
+	right: 5px;
+}
+label {
+	float: left;
+}
+form {
+	top: 50px;
+	right: 0;
+	position: absolute;
+	width: 25%;
+}
+table {
+	top:50px;
+	display: table;
+	border: 2px solid black;
+	position: relative;
+	overflow: hidden;
+}
+tr {
+	overflow: hidden;
+}
+td{
+	padding:10px;
+	width: 170px;
+	height:147px;
+	border: 5px solid grey;
+	overflow: auto;
+	position: relative;
+	background-color: darkgray;
+}
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* Main content */
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+body {
+background-color: lightgrey;
+}
+	</style>
+
+</body>
+<script src="{% static '/js/main.js' %}">alert("working?")</script>
+</html>
