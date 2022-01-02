@@ -82,17 +82,23 @@ class Table {
 table = new Table; 
 table.create_tr();
 
-function createbbl(username,date,AOT,desc,amount,day) {
+function createbbl(username,date,AOT,desc,amount,day,title) {
 	counter++;
 	let curr_row = table.tr_objs[table.tr_objs.length-1];
 	console.log(`parent id: td-${day}`)
 	//let dv = new html_ele(1,`td-${day}`,'div');
 	let dv = document.createElement('div');
+	let btton = document.createElement('button');
+	btton.innerText = `${title}`;
 	dvs.push(dv);
+	document.getElementById(`td-${day}`).append(btton);
 	document.getElementById(`td-${day}`).append(dv);
+	btton.classList.add("collapsible");
 	dv.id = `div-${counter}`;
-	dv.class = 'bbl';
+	//dv.class = 'bbl';
+	document.getElementById(dv.id).classList.add("content");
 	//dv.giveId(dv.id);
+	console.log("classList:",document.getElementById(dv.id).classList);
 	bbl = new html_ele(amount,dv.id,'p');
 	console.log(`div id: ${dv.id}`);
 	let bbl_info = ['username: ' + username,'date: ' + date,'amount of time: ' + AOT, 'desc.: '+desc ];
@@ -100,11 +106,25 @@ function createbbl(username,date,AOT,desc,amount,day) {
 		bbl.txt(bbl_info[i],i);	
 
 	}
+	var coll = document.getElementsByClassName("collapsible");
+	console.log("coll:",document.getElementsByClassName("collapsible").length);
+	for (i = 0; i < document.getElementsByClassName("collapsible").length; i++) {
+		console.log("for loop");
+  		coll[i].addEventListener("click", function() {
+  		console.log("click function called")
+    	this.classList.toggle("active");
+    	var content = this.nextElementSibling;
+
+    	if (content.style.display === "block") {
+      		content.style.display = "none";
+    	} else {
+      		content.style.display = "block";
+    }
+  });
+}
 }
 
-function createdrop() {
-	
-}
+
 
 function createCalendar() {
 	console.log("days in the month:"+months[n]);
@@ -127,11 +147,15 @@ function update() {
 	let day = document.getElementById('day').value;
 	let AOT = document.getElementById('AOT').value;
 	let desc = document.getElementById('desc').value;
-	createbbl('usr',today,AOT,desc,4,day);
+	let title = document.getElementById('title').value;
+	createbbl('usr',today,AOT,desc,4,day,title);
 }
+
+
 //prevent refresh when submitted
 var form = document.getElementById("form_cal");
 function handleForm(event) { event.preventDefault(); } 
 form.addEventListener('submit', handleForm);
+
 
 

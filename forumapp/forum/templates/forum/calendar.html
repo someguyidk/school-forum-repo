@@ -18,21 +18,29 @@
   <a href="objectives.html">Objectives</a>
 </div>
 <form id="form_cal">
-	<label>Amount of Time:</label>
-	<input id="AOT" name="" type="text">
-	<label>Description:</label>
-	<textarea id="desc" name="paragraph_text" cols="50" rows="5"></textarea>
-	<select id="day"></select>
-	<label>Day of the Month:</label>
+	<table>
+		<tr>
+			<td>Title</td>
+			<td><input id="title" name="" type="text"></td>
+		</tr>
+		<tr>
+			<td>Amount of Time</td>
+			<td><input id="AOT" name="" type="text"></td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td><textarea id="desc" name="paragraph_text" cols="50" rows="5"></textarea></td>
+		</tr>
+		<tr>
+			<td>Day of the Month</td>
+			<td><select id="day"></select></td>
+		</tr>
+	</table>
 	<button onclick="update()">Create Calendar Event</button>
 </form>
 	<style>
 .bbl {
 	overflow: auto;
-}
-#AOT {
-	float: right;
-	width: 100%;
 }
 button {
 	right: 5px;
@@ -40,28 +48,39 @@ button {
 label {
 	float: left;
 }
+div {
+	overflow: scroll;
+	border-radius: 10px;
+}
 form {
 	top: 50px;
-	right: 0;
-	position: absolute;
+	right: 100px;
+	position: fixed;
+	flex-wrap: wrap;
 	width: 25%;
 }
-table {
+input, textarea {
+	border-radius: 10px;
+}
+input {
+	max-width: 400px;
+}
+#calendar_table {
 	top:50px;
 	display: table;
-	border: 2px solid black;
-	position: relative;
+	position: absolute;
 	overflow: hidden;
+	border-collapse: collapse;
 }
-tr {
-	overflow: hidden;
+#calendar_table tr {
+	overflow: scroll;
 }
-td{
-	padding:10px;
-	width: 170px;
+#calendar_table td{
+	padding:1px;
+	width: 145px;
 	height:147px;
 	border: 5px solid grey;
-	overflow: auto;
+	overflow: visible;
 	position: relative;
 	background-color: darkgray;
 }
@@ -96,9 +115,42 @@ td{
 }
 body {
 background-color: lightgrey;
+overflow: auto;
 }
-	</style>
+
+</style>
 
 </body>
 <script src="{% static '/js/main.js' %}">alert("working?")</script>
+<style type="text/css">
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 2px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  top:0;
+  margin-left: 2px;
+  position:absolute;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 2px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  top: 0;
+}
+</style>
 </html>
