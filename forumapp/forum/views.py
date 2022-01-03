@@ -1,7 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from pathlib import Path
 # Create your views here.
+
+polls_test = [
+	{
+	'id':'poll-1',
+	'title':'First Poll'
+	},
+	{
+	'id':'poll-2',
+	'title':'Second Poll'
+	},
+]
 
 def home(request):
 	return render(request, 'forum/home.html')
@@ -9,3 +19,9 @@ def home(request):
 def calendar(request):
 	print(Path(__file__).resolve())
 	return render(request, 'forum/calendar.html')
+
+def polls(request):
+	context = {'polls':polls_test}
+	return render(request, 'forum/polls.html', context)
+
+

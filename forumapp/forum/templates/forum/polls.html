@@ -1,0 +1,21 @@
+{% extends 'forum/main_template.html' %}
+
+{% block title %}
+
+pokemon go to the polls -Hillary
+
+{% endblock title %}
+
+{% block content %}
+
+{% for poll in polls %}
+
+	<article>
+		<h3>{{ poll.title }}</h3>
+		<canvas id="{{ poll.id }}"></canvas>
+	</article>
+
+{% endfor %}
+<p>?</p>
+
+{% endblock content %}
