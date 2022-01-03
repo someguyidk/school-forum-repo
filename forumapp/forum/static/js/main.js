@@ -82,7 +82,7 @@ class Table {
 table = new Table; 
 table.create_tr();
 
-function createbbl(username,date,AOT,desc,amount,day,title) {
+function createbbl(username,date,AOT,desc,amount,day,title,color) {
 	counter++;
 	let curr_row = table.tr_objs[table.tr_objs.length-1];
 	console.log(`parent id: td-${day}`)
@@ -107,13 +107,13 @@ function createbbl(username,date,AOT,desc,amount,day,title) {
 
 	}
 	var coll = document.getElementsByClassName("collapsible");
+	btton.style.backgroundColor = color;
 	console.log("coll:",document.getElementsByClassName("collapsible").length);
-	for (i = 0; i < document.getElementsByClassName("collapsible").length; i++) {
-		console.log("for loop");
-  		coll[i].addEventListener("click", function() {
-  		console.log("click function called")
-    	this.classList.toggle("active");
+	//adds event listener "click" to the buttons as to show the div tags when clicked
+  		btton.addEventListener("click", function() {
     	var content = this.nextElementSibling;
+    	console.log("sibling: ", this.nextElementSibling);
+    	console.log("content stye isplay:",content.style.display);
 
     	if (content.style.display === "block") {
       		content.style.display = "none";
@@ -121,7 +121,7 @@ function createbbl(username,date,AOT,desc,amount,day,title) {
       		content.style.display = "block";
     }
   });
-}
+
 }
 
 
@@ -129,9 +129,13 @@ function createbbl(username,date,AOT,desc,amount,day,title) {
 function createCalendar() {
 	console.log("days in the month:"+months[n]);
 	for (let i=0; i<months[n];i++) {
+		let daynum = document.createElement("P");
 		counter++;
 		let td = document.createElement('td');
 		calendar.push(td);
+		daynum.innerText = counter;
+		td.appendChild(daynum);
+		daynum.classList.add("daynm");
 		td.id = `td-${counter}`;
 		this.len = calendar.length;
 		let curr_row = table.tr_objs[table.tr_objs.length-1];
@@ -148,7 +152,8 @@ function update() {
 	let AOT = document.getElementById('AOT').value;
 	let desc = document.getElementById('desc').value;
 	let title = document.getElementById('title').value;
-	createbbl('usr',today,AOT,desc,4,day,title);
+	let clr = document.getElementById("color-picker").value;
+	createbbl('usr',today,AOT,desc,4,day,title,clr);
 }
 
 
@@ -156,6 +161,4 @@ function update() {
 var form = document.getElementById("form_cal");
 function handleForm(event) { event.preventDefault(); } 
 form.addEventListener('submit', handleForm);
-
-
 

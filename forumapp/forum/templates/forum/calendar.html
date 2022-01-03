@@ -4,13 +4,12 @@
 	<title>Calendar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script> -->
 </head>
 <body>
-	{% load static %}
 <div class="navbar">
   <a href="index.html">Events</a>
   <a href="calendar.html">Calendar</a>
@@ -26,6 +25,10 @@
 		<tr>
 			<td>Amount of Time</td>
 			<td><input id="AOT" name="" type="text"></td>
+		</tr>
+		<tr>
+			<td>Color of Bubble</td>
+			<td><input id="color-picker" type="color" value="#FFFFFF"></td>
 		</tr>
 		<tr>
 			<td>Description</td>
@@ -114,14 +117,14 @@ input {
   margin-top: 30px; /* Add a top margin to avoid content overlay */
 }
 body {
-background-color: lightgrey;
-overflow: auto;
+	background-color: lightgrey;
+	overflow: auto;
 }
 
 </style>
 
 </body>
-<script src="{% static '/js/main.js' %}">alert("working?")</script>
+<script src="main.js"></script>
 <style type="text/css">
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
@@ -136,7 +139,7 @@ overflow: auto;
   font-size: 15px;
   top:0;
   margin-left: 2px;
-  position:absolute;
+  position:relative;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -151,6 +154,13 @@ overflow: auto;
   overflow: hidden;
   background-color: #f1f1f1;
   top: 0;
+  /* Transition does not work */
+  transition: max-height 0.2s ease-out;
+}
+.daynm {
+	top:0px;
+	right:0px;
+	position: absolute;
 }
 </style>
 </html>
