@@ -2,20 +2,51 @@
 
 {% block title %}
 
-pokemon go to the polls -Hillary
+pokemon go to the polls -Hillary Clinton
 
 {% endblock title %}
 
-{% block content %}
+{% block additional %}
 
+    
+
+{% endblock additional %}
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 {% for poll in polls %}
 
-	<article>
-		<h3>{{ poll.title }}</h3>
-		<canvas id="{{ poll.id }}"></canvas>
-	</article>
+
+<div class="card" id="{{ poll.id }}">
+  	<div class="card-header">
+    {{ poll.title }}
+ 	</div>
+  	<div class="card-body">
+    	<h5 class="card-title">Special title treatment</h5>
+    	<p class="card-text">{{ poll.question }}</p>
+    	<div class="progress">
+    		<div id="{{ poll.id }}" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{{ poll.approval }}%">
+      				{{ poll.approval }}%
+    		</div>
+  		</div>
+    	<a href="#" class="btn btn-primary">Participate</a>
+  	</div>
+</div>
+
 
 {% endfor %}
-<p>?</p>
 
+<style type="text/css">
+.card {
+margin-top: 40px;
+}
+.nv a {
+font-size: 13.8px;
+}
+
+body {
+	background-color: lightgray;
+	font-size: 16px;
+}
+</style>
 {% endblock content %}

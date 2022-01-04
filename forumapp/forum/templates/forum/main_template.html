@@ -10,13 +10,59 @@
 {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  {% block additional %}{% endblock additional%}
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script> -->
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
 </head>
 <body>
+
+<div class="nv">
+  <a href="/events/">Events</a>
+  <a href="/calendar/">Calendar Event Proposal</a>
+  <a href="/calendar/">Calendar of Events</a>
+  <a href="/profile/">Profile</a>
+  <a href="/polls/">Polls</a>
+  <a href="/create_poll/">CreatePoll</a>
+</div>
+
 {% block content%}
 {% endblock content %}
 </body>
+<style type="text/css">
+  body {
+    margin-top:50px;
+  }
+  /* The navigation bar */
+.nv {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.nv a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.nv a:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* Main content */
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+</style>
 </html>
