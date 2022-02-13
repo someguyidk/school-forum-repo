@@ -21,10 +21,11 @@
 <div class="nv">
   <a href="/events/">Events</a>
   <a href="{% url 'calendar' %}">Calendar Event Proposal</a>
-  <a href="/{% url 'calendar' %}">Calendar of Events</a>
+  <a href="{% url 'calendar' %}">Calendar of Events</a>
   <a href="/profile/">Profile</a>
   <a href="{% url 'polls' %}">Polls</a>
-  <a href="{% url 'create-poll' %}">CreatePoll</a>
+  <a href="{% url 'create_poll' %}">CreatePoll</a>
+  <a href="{% url 'forum_forum' %}">Forum</a>
 </div>
 
 {% block content%}
@@ -34,6 +35,8 @@
   body {
     margin-top:50px;
   }
+
+
   /* The navigation bar */
 .nv {
   overflow: hidden;
@@ -63,6 +66,7 @@
 .main {
   margin-top: 30px; /* Add a top margin to avoid content overlay */
 }
+
 
 </style>
 </html>

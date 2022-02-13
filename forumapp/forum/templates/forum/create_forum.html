@@ -2,7 +2,7 @@
 
 {% block title %}
 
-pokemon go to the creation of polls
+Create Forum Post
 
 {% endblock title %}
 
@@ -13,6 +13,33 @@ pokemon go to the creation of polls
 {% endblock additional %}
 
 {% block content %}
+<form id="form_cal">
+	<table>
+		<tr>
+			<td>Title</td>
+			<td><input id="title" name="" type="text"></td>
+		</tr>
+		<tr>
+			<td>Content</td>
+			<td><textarea id="desc" name="paragraph_text" cols="50" rows="5"></textarea></td>
+		</tr>
+		<tr>
+			<td>File Option</td>
+			<td><input type="file" name=""></td>
+		</tr>
+		<tr>
+			<td>Annonymous Option* </td>
+			<td>  <input type="checkbox" name=""></td>
+		</tr>
+	</table>
+	<button href="{% url 'forum_forum' %}">Create Forum Post</button>
+	<a href="{% url 'forum_forum' %}">Back</a>
+</form>
 
+<style>
+body {
+	background-color:lightgray;
+}
+</style>
 {% endblock content %}
 
