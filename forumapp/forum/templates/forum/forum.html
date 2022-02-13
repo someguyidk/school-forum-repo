@@ -2,7 +2,7 @@
 
 {% block title %}
 
-pokemon go to the polls -Hillary Clinton
+Forum pokemon go to the polls -Hillary Clinton
 
 {% endblock title %}
 
@@ -14,27 +14,27 @@ pokemon go to the polls -Hillary Clinton
 
 {% block content %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-{% for poll in polls %}
+{% for post in posts %}
 
 
-<div class="card" id="{{ poll.id }}">
+<div class="card" id="{{ post.author.id }}">
     <div class="card-header">
-    {{ poll.title }}
+    {{ post.title }} id: {{ post.id }}
   </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">{{ poll.question }}</p>
-      <div class="progress">
-        <div id="{{ poll.id }}" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{{ poll.approval }}%">
-              {{ poll.approval }}%
-        </div>
-      </div>
+      <h5 class="card-title">Post Content - {{ post.date_posted }}</h5>
+      <p class="card-text">{{ post.content }}</p>
+      
       <a href="#" class="btn btn-primary">Participate</a>
     </div>
 </div>
 
-
 {% endfor %}
+
+<footer>
+  <a href="{% url 'create_forum' %}">Create Forum Post</a>
+</footer>
+
 <style type="text/css">
 .card {
 margin-top: 20px;
@@ -47,5 +47,11 @@ body {
   background-color: lightgray;
   font-size: 16px;
 }
+footer {
+  bottom:10px;
+  right: 10px;
+  position: fixed;
+}
 </style>
+
 {% endblock content %}

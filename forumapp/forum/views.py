@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from pathlib import Path
-# Create your views here.
+from .models import *
 
 polls_test = [
 	{
@@ -15,7 +15,7 @@ polls_test = [
 	'question':'Should TOK be kept as a class?',
 	'approval': 20,
 	},
-]
+] 
 
 def home(request):
 	return render(request, 'forum/home.html')
@@ -31,3 +31,12 @@ def polls(request):
 def create_forum(request):
 	return render(request, 'forum/create_forum.html')
 
+def forum(request):
+	context = {'posts':For_Post.objects.all()}
+	return render(request, 'forum/forum.html', context)
+
+def profile(request):
+	return render(request, 'forum/profile.html')
+
+def create_forum(request):
+	return render(request, 'forum/create_forum.html')
