@@ -13,6 +13,14 @@ Create Forum Post
 {% endblock additional %}
 
 {% block content %}
+
+<form action="{% url 'forum_forum' %}" method=POST>
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" name="">
+</form>
+
+<!--
 <form id="form_cal">
 	<table>
 		<tr>
@@ -35,7 +43,7 @@ Create Forum Post
 	<button href="{% url 'forum_forum' %}">Create Forum Post</button>
 	<a href="{% url 'forum_forum' %}">Back</a>
 </form>
-
+-->
 <style>
 body {
 	background-color:lightgray;

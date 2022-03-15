@@ -1,4 +1,5 @@
 {% extends 'forum/main_template.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 
@@ -24,12 +25,21 @@ Forum pokemon go to the polls -Hillary Clinton
     <div class="card-body">
       <h5 class="card-title">Post Content - {{ post.date_posted }}</h5>
       <p class="card-text">{{ post.content }}</p>
-      
+      {% if post.file %}
+        {{ post.file }}
+      {% endif %}
       <a href="#" class="btn btn-primary">Participate</a>
     </div>
 </div>
-
 {% endfor %}
+
+<div>
+  <form action="{% url 'forum_forum' %}" method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+  <input type="submit" name="">
+  </form>
+</div>
 
 <footer>
   <a href="{% url 'create_forum' %}">Create Forum Post</a>
