@@ -15,10 +15,23 @@ Forum pokemon go to the polls -Hillary Clinton
 
 {% block content %}
 {% for post in posts %}
-
+<!--
+<article class="media content-section">
+  <img style="width:80px; height:80px;" class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a href="#" class="mr-2">{{post.author}}</a>
+      <small class="text-muted">{{post.date_posted|date:"F d, Y"}}</small></div>
+    </div>
+    <h2><a href="#" class="article-title"></a>{{post.title}}</h2>
+    <p class="article-content"></p>
+  </div>
+</article>
+-->
 
 <div class="card" id="{{ post.author.id }}">
     <div class="card-header">
+      <img style="width:40px; height:40px; margin-right: 10px;" class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
     {{ post.title }} id: {{ post.id }}
   </div>
     <div class="card-body">
