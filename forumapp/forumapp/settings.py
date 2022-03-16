@@ -123,6 +123,10 @@ USE_TZ = True
   
 STATIC_URL = '/forum/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = (os.path.join(BASE_DIR, STATIC_URL),)
 
 # Default primary key field type
@@ -131,3 +135,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, STATIC_URL),)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'forum_home'
+
+LOGIN_URL = 'login'
