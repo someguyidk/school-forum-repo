@@ -11,7 +11,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block additional %}{% endblock additional%}
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!-- <script src="/socket.io/socket.io.js"></script> -->
@@ -36,17 +36,16 @@
   </div>
 </div>
 
+    <main role="main" class="container">
 {% if messages %}
   {% for message in messages %}
-<div class="alert alert-{{ message.tags }}">
+<div class="alert alert-{{ message.tags }}" role="alert">
 
   {{ message }}
-  
+  {message.tags}
 </div>
   {% endfor %}
 {% endif %}
-
-    <main role="main" class="container">
       <div class="row">
         <div class="col-md-8">
           {% block content %}{% endblock %}
@@ -54,12 +53,12 @@
         <div class="col-md-4">
           <div class="content-section">
             <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
+            <p class='text-muted'>Participate or something
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">SGA</li>
                 <li class="list-group-item list-group-item-light">Announcements</li>
                 <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+                <li class="list-group-item list-group-item-light">Clubs</li>
               </ul>
             </p>
           </div>

@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.forms.fields import EmailField  
 from django.forms.forms import Form  
 from django.shortcuts import render, redirect
+from .models import Profile
 
 class UserRegistrationForm(UserCreationForm):
 	email = EmailField(max_length = 100)
@@ -20,3 +21,20 @@ class UserRegistrationForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['username','email','password1','password2']
+
+class UserUpdateForm(forms.ModelForm):
+	email = EmailField(max_length = 100)
+
+	class Meta:
+		model = User
+		fields = ['username', 'email']
+
+class ProfileUpdateForm(forms.ModelForm):
+
+	class Meta:
+		model = Profile
+		fields = ['image']
+
+
+
+
