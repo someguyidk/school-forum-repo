@@ -10,13 +10,6 @@
 {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% block additional %}{% endblock additional%}
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- <script src="/socket.io/socket.io.js"></script> -->
-</head>
-<body>
 
 <div class="nv">
   <a href="{% url 'forum_home' %}">Home</a>
@@ -35,6 +28,15 @@
     {% endif %}
   </div>
 </div>
+  
+  {% block additional %}{% endblock additional%}
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+
+</head>
+<body>
 
     <main role="main" class="container">
 {% if messages %}
@@ -76,7 +78,7 @@
 .nv {
   overflow: hidden;
   background-color: #333;
-  position: fixed; /* Set the navbar to fixed position */
+  /*position: fixed; Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
