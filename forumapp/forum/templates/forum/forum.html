@@ -1,5 +1,6 @@
 {% extends 'forum/main_template.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}
 
@@ -33,32 +34,44 @@ Forum pokemon go to the polls -Hillary Clinton
 
 <div class="card" id="{{ post.author.id }}">
     <div class="card-header">
+    {% if post.AN == False %}
       <img style="width:40px; height:40px; margin-right: 10px;" class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
-    {{ post.title }} id: {{ post.id }}
+    
+    {{ post.author }} - {{ post.date_posted }}
+    {% else %}
+      <img style="width:40px; height:40px; margin-right: 10px;" class="rounded-circle article-img" src="https://static.thenounproject.com/png/638448-200.png">
+    
+    Annonymous - {{ post.date_posted }}
+    {% endif %}
   </div>
     <div class="card-body">
-      <h5 class="card-title">Post Content - {{ post.date_posted }}</h5>
+      <h5 class="card-title"> {{post.title}}</h5>
       <p class="card-text">{{ post.content }}</p>
-      {% if post.file %}
+      <!--{% if post.file %}
         {{ post.file }}
       {% endif %}
-      <a href="#" class="btn btn-primary">Participate</a>
+      -->
+       <a href="{% url 'post_detail' pk=post.id %}" class="btn btn-primary">Participate</a> 
     </div>
 </div>
 {% endfor %}
 
+</br>
+{% if request.user.is_authenticated %}
 <div>
   <form action="{% url 'forum_forum' %}" method='POST' enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
-  <input type="submit" name="">
+  <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+{% else %}
 
-<footer>
-  <a href="{% url 'create_forum' %}">Create Forum Post</a>
-</footer>
+<div class="alert alert-warning" role="alert">
+  Please log In to post in the Forum
+</div>
 
+{% endif %}
 <style type="text/css">
 .card {
 margin-top: 20px;
