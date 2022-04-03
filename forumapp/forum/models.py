@@ -13,7 +13,7 @@ class For_Post(models.Model):
 	author = models.ForeignKey(User, on_delete = models.CASCADE)
 	#AN = "annonymous"
 	AN = models.BooleanField(default=False)
-	file = models.FileField(upload_to = 'user/files/', blank=True)
+	file = models.FileField(upload_to = 'user/files/', blank=True, null=True)
 
 	def __str__(self):
 		return self.title

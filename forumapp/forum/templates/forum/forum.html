@@ -4,7 +4,7 @@
 
 {% block title %}
 
-Forum pokemon go to the polls -Hillary Clinton
+Forum 
 
 {% endblock title %}
 
@@ -15,8 +15,32 @@ Forum pokemon go to the polls -Hillary Clinton
 {% endblock additional %}
 
 {% block content %}
-{% for post in posts %}
+</br>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Math</a>
+    <a class="dropdown-item" href="#">Physics</a>
+    <a class="dropdown-item" href="#">Spanish</a>
+    <a class="dropdown-item" href="#">English</a>
+    <a class="dropdown-item" href="#">History</a>
+    <a class="dropdown-item" href="#">Biology</a>
+    <a class="dropdown-item" href="#">Chemistry</a>
+    <a class="dropdown-item" href="#">Economics</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Psycology</a>
+    <a class="dropdown-item" href="#">CAS</a>
+  </div>
+</div>
+
+</br>
+
+{% for post in page_obj %}
 <!--
+
   Alternate template code for posts idk
 
 <article class="media content-section">
@@ -56,6 +80,24 @@ Forum pokemon go to the polls -Hillary Clinton
 </div>
 {% endfor %}
 
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 </br>
 {% if request.user.is_authenticated %}
 <div>
@@ -73,6 +115,13 @@ Forum pokemon go to the polls -Hillary Clinton
 
 {% endif %}
 <style type="text/css">
+
+/* Write Here*/
+
+
+
+
+/*  End */
 .card {
 margin-top: 20px;
 }
