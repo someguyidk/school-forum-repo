@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from .views import *
 
 urlpatterns= [
 	path('', views.home, name='forum_home'),
@@ -9,6 +9,11 @@ urlpatterns= [
 	path('polls/', views.polls, name='polls'),
 	path('create_poll/',views.create_forum, name='create_poll'),
 	path('forum/', views.forum, name="forum_forum"),
+	#path('forum/', PostListView.as_view(), name="forum_forum"),
+	path('forum/post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
+	path('forum/post/<int:pk>/update/', PostUpdateView.as_view(), name='post_update'), 
+	path('forum/post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'), 
+	path('forum/post/new/', PostCreateView.as_view(), name='post_create'),
 	path('profile/',views.profile, name="profile"),
 	path('create_forum/',views.create_forum, name="create_forum"),
 ]

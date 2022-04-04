@@ -1,9 +1,10 @@
 {% extends 'forum/main_template.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}
 
-Forum pokemon go to the polls -Hillary Clinton
+Forum 
 
 {% endblock title %}
 
@@ -14,8 +15,32 @@ Forum pokemon go to the polls -Hillary Clinton
 {% endblock additional %}
 
 {% block content %}
-{% for post in posts %}
+</br>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Math</a>
+    <a class="dropdown-item" href="#">Physics</a>
+    <a class="dropdown-item" href="#">Spanish</a>
+    <a class="dropdown-item" href="#">English</a>
+    <a class="dropdown-item" href="#">History</a>
+    <a class="dropdown-item" href="#">Biology</a>
+    <a class="dropdown-item" href="#">Chemistry</a>
+    <a class="dropdown-item" href="#">Economics</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Psycology</a>
+    <a class="dropdown-item" href="#">CAS</a>
+  </div>
+</div>
+
+</br>
+
+{% for post in page_obj %}
 <!--
+
   Alternate template code for posts idk
 
 <article class="media content-section">
@@ -33,33 +58,70 @@ Forum pokemon go to the polls -Hillary Clinton
 
 <div class="card" id="{{ post.author.id }}">
     <div class="card-header">
+    {% if post.AN == False %}
       <img style="width:40px; height:40px; margin-right: 10px;" class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
-    {{ post.title }} id: {{ post.id }}
+    
+    {{ post.author }} - {{ post.date_posted }}
+    {% else %}
+      <img style="width:40px; height:40px; margin-right: 10px;" class="rounded-circle article-img" src="https://static.thenounproject.com/png/638448-200.png">
+    
+    Annonymous - {{ post.date_posted }}
+    {% endif %}
   </div>
     <div class="card-body">
-      <h5 class="card-title">Post Content - {{ post.date_posted }}</h5>
+      <h5 class="card-title"> {{post.title}}</h5>
       <p class="card-text">{{ post.content }}</p>
-      {% if post.file %}
+      <!--{% if post.file %}
         {{ post.file }}
       {% endif %}
-      <a href="#" class="btn btn-primary">Participate</a>
+      -->
+       <a href="{% url 'post_detail' pk=post.id %}" class="btn btn-primary">Participate</a> 
     </div>
 </div>
 {% endfor %}
 
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+</br>
+{% if request.user.is_authenticated %}
 <div>
   <form action="{% url 'forum_forum' %}" method='POST' enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
-  <input type="submit" name="">
+  <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+{% else %}
 
-<footer>
-  <a href="{% url 'create_forum' %}">Create Forum Post</a>
-</footer>
+<div class="alert alert-warning" role="alert">
+  Please log In to post in the Forum
+</div>
 
+{% endif %}
 <style type="text/css">
+
+/* Write Here*/
+
+
+
+
+/*  End */
 .card {
 margin-top: 20px;
 }
